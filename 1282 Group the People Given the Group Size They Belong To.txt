@@ -1,0 +1,23 @@
+class Solution:
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        freq = {}
+        count = {}
+        res = []
+        for i, x in enumerate(groupSizes):
+            if x in freq:
+                freq[x].append(i)
+                count[x] += 1
+            else:
+                freq[x] = [i]
+                count[x] = 1
+                
+            if count[x] == x:
+                res.append(freq[x])
+                freq.pop(x)
+                count.pop(x)
+                
+        return res
+                
+            
+            
+        
