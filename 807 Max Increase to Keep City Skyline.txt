@@ -1,0 +1,20 @@
+class Solution:
+    def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
+        s = 0
+        Maxc = 0
+        sktb = []
+        sklr = []                  
+        for r in range(len(grid)):
+            sktb.append(max(grid[r]))
+            
+        tmatrix = list(zip(*grid))
+        for r in range(len(tmatrix)):
+            sklr.append(max(tmatrix[r]))
+            
+        for r in range(len(grid)):
+            for c in range(len(grid)):
+                if grid[r][c] < sktb[r] or grid[r][c] < sklr[c]:
+                    s += min(sktb[r],sklr[c]) - grid[r][c]
+        return s
+                
+        
